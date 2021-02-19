@@ -33,8 +33,8 @@ func updatestudent(w http.ResponseWriter, r *http.Request) {
 			i.Name = x.Name
 			i.Roll = x.Roll
 			i.Age = x.Age
-			n2 := append(n2[:index], n2[index+1:]...)
-			n2 = append(n2, i)
+			nx := append(n2[:index], i)
+			n2 = append(nx, n2[index+1:]...)
 			json.NewEncoder(w).Encode(n2)
 		}
 	}
@@ -46,8 +46,8 @@ func updateparticular(w http.ResponseWriter, r *http.Request) {
 	for index, i := range n2 {
 		if i.Name == name {
 			i.Name = x.Name
-			n2 := append(n2[:index], n2[index+1:]...)
-			n2 = append(n2, i)
+			nx := append(n2[:index], i)
+			n2 = append(nx, n2[index+1:]...)
 			json.NewEncoder(w).Encode(n2)
 		}
 	}
